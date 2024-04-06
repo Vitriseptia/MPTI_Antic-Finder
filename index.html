@@ -12,39 +12,31 @@
 </head>
 <body>
     <!-- navbar section -->
-    <section id="my-navbar">
-        <div class="container-fluid px-5 py-3">
-            <div class="row px-5 mb-2">
-                <div class="col-md-10 d-flex justify-content-between align-items-center px-5">
-                    <div class="d-flex align-items-center">
-                        <a href="#" class="my-title text-decoration-none me-5 fs-3 fw-bold"><h1>AntikFinder</h1></a>
-                        <ul class="nav ms-3">
-                            <li><a href="#" class="nav-link px-2 me-5 fw-medium fs-5">elektronik</a></li>
-                            <li><a href="#" class="nav-link px-2 me-5 fw-medium fs-5">furniture</a></li>
-                            <li><a href="#" class="nav-link px-2 me-5 fw-medium fs-5">fashion</a></li>
-                        </ul>
-                    </div>
-                    <div class="my-login-register">
-                        <button type="button" class="btn fw-bold">Register</button>
-                        <button type="button" class="btn ms-3 fw-bold">Login</button>
-                    </div>
-                </div>
-                <div class="col-md-2 d-flex align-items-center justify-content-center my-sell">
-                    <button type="button" class="btn btn-danger ms-3 fw-bold">Sell</button>
-                </div>
+    <header id="my-navbar" class="p-3">
+        <div class="container-fluid px-5">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none me-5">
+                <h1>AntikFinder</h1>
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 d-flex justify-content-center mb-md-0" style="gap: 1.5rem;">
+                <li><a href="#" class="nav-link px-2 text-white fw-bold">Elektronik</a></li>
+                <li><a href="#" class="nav-link px-2 text-white fw-bold">Furniture</a></li>
+                <li><a href="#" class="nav-link px-2 text-white fw-bold">Fashion</a></li>
+            </ul>
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+            </form>
+
+            <div class="text-end">
+                <button type="button" class="btn btn-danger fw-bold my-btn me-3">Sell</button>
+                <button type="button" class="btn my-btn fw-bold login-register-btn me-3">Login</button>
+                <button type="button" class="btn my-btn fw-bold login-register-btn">Sign-up</button>
             </div>
-            <div class="row px-5">
-                <div class="col-md-10 d-flex justify-content-between align-items-center px-5">
-                    <form class="nav-search" role="search">
-                        <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-                    </form>
-                </div>
-                <div class="col-md-2 d-flex align-items-center justify-content-center my-search">
-                    <button type="button" class="btn ms-3 fw-bold">Search</button>
-                </div>
             </div>
         </div>
-    </section>
+    </header>
 
     <section id="my-content" class="py-3 mb-5">
         <div class="container-lg mb-4">
@@ -52,7 +44,7 @@
         </div>
         <div class="container-lg d-flex flex-column">
             <div class="row mb-5">
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-xl-3 col-sm-6">
                     <div class="card" style="width: 18rem; height: 100%;">
                         <img src="./img/teko-bambang.jpg" class="card-img-top" alt="teko">
                         <div class="card-body d-flex flex-column justify-content-between" style="gap: 1rem;">
@@ -67,7 +59,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-xl-3 col-sm-6">
                     <div class="card" style="width: 18rem; height: 100%;">
                         <img src="./img/guci-yanto.jpg" class="card-img-top" alt="guci">
                         <div class="card-body d-flex flex-column justify-content-between" style="gap: 1rem;">
@@ -82,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-xl-3 col-sm-6">
                     <div class="card" style="width: 18rem; height: 100%;">
                         <img src="./img/kursi-anjar.jpg" class="card-img-top" alt="kursi">
                         <div class="card-body d-flex flex-column justify-content-between" style="gap: 1rem;">
@@ -97,7 +89,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-xl-3 col-sm-6">
                     <div class="card" style="width: 18rem; height: 100%;">
                         <img src="./img/meja-makima.jpg" class="card-img-top" alt="meja">
                         <div class="card-body d-flex flex-column justify-content-between" style="gap: 1rem;">
@@ -115,7 +107,7 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-xl-3 col-sm-6">
                     <div class="card" style="width: 18rem; height: 100%;">
                         <img src="./img/lemari-oacan.jpg" class="card-img-top" alt="teko">
                         <div class="card-body d-flex flex-column justify-content-between" style="gap: 1rem;">
@@ -130,7 +122,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-xl-3 col-sm-6">
                     <div class="card" style="width: 18rem; height: 100%;">
                         <img src="./img/meja-princess.jpg" class="card-img-top" alt="guci">
                         <div class="card-body d-flex flex-column justify-content-between" style="gap: 1rem;">
@@ -145,7 +137,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-xl-3 col-sm-6">
                     <div class="card" style="width: 18rem; height: 100%;">
                         <img src="./img/kursi-bento.jpg" class="card-img-top" alt="kursi">
                         <div class="card-body d-flex flex-column justify-content-between" style="gap: 1rem;">
@@ -160,7 +152,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-xl-3 col-sm-6">
                     <div class="card" style="width: 18rem; height: 100%;">
                         <img src="./img/cermin-kirani.jpeg" class="card-img-top" alt="meja">
                         <div class="card-body d-flex flex-column justify-content-between" style="gap: 1rem;">

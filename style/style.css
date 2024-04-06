@@ -20,12 +20,9 @@
     color: white;
 }
 
-.my-login-register button {
+.login-register-btn {
     background-color: #FFABAB;
-    color: black;
     border: 0;
-    width: 8rem;
-    border-radius: 50px;
 }
 
 .card-img-top {
@@ -33,20 +30,13 @@
     min-height: 350px;
 }
 
-.my-sell button {
-    width: 8rem;
+.my-btn {
+    width: 6rem;
     border-radius: 50px;
 }
 
 .nav-search {
     width: 100%;
-}
-
-.my-search button {
-    background-color: #04D700;
-    width: 8rem;
-    border-radius: 50px;
-    color: white;
 }
 
 .beli-button a {

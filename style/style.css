@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+#my-navbar {
+    background-color: #D14D72;
+}
+
+.my-title {
+    color: white;
+}
+
+.my-title h1 {
+    margin-bottom: 0;
+}
+
+.nav li a {
+    color: white;
+}
+
+.my-login-register button {
+    background-color: #FFABAB;
+    color: black;
+    border: 0;
+    width: 8rem;
+    border-radius: 50px;
+}
+
+.card-img-top {
+    max-height: 350px;
+    min-height: 350px;
+}
+
+.my-sell button {
+    width: 8rem;
+    border-radius: 50px;
+}
+
+.nav-search {
+    width: 100%;
+}
+
+.my-search button {
+    background-color: #04D700;
+    width: 8rem;
+    border-radius: 50px;
+    color: white;
+}
+
+.beli-button a {
+    width: 100%;
+}
+
+#my-detail {
+    color: white;
+}

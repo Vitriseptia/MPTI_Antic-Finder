@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style/style.css">
+    <title>AntikFinder</title>
+</head>
+<body>
+    <!-- navbar section -->
+    <section id="my-navbar">
+        <div class="container-fluid px-5 py-3">
+            <div class="row px-5 mb-2">
+                <div class="col-md-10 d-flex justify-content-between align-items-center px-5">
+                    <div class="d-flex align-items-center">
+                        <a href="#" class="my-title text-decoration-none me-5 fs-3 fw-bold"><h1>AntikFinder</h1></a>
+                        <ul class="nav ms-3">
+                            <li><a href="#" class="nav-link px-2 me-5 fw-medium fs-5">elektronik</a></li>
+                            <li><a href="#" class="nav-link px-2 me-5 fw-medium fs-5">furniture</a></li>
+                            <li><a href="#" class="nav-link px-2 me-5 fw-medium fs-5">fashion</a></li>
+                        </ul>
+                    </div>
+                    <div class="my-login-register">
+                        <button type="button" class="btn fw-bold">Register</button>
+                        <button type="button" class="btn ms-3 fw-bold">Login</button>
+                    </div>
+                </div>
+                <div class="col-md-2 d-flex align-items-center justify-content-center my-sell">
+                    <button type="button" class="btn btn-danger ms-3 fw-bold">Sell</button>
+                </div>
+            </div>
+            <div class="row px-5">
+                <div class="col-md-10 d-flex justify-content-between align-items-center px-5">
+                    <form class="nav-search" role="search">
+                        <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                    </form>
+                </div>
+                <div class="col-md-2 d-flex align-items-center justify-content-center my-search">
+                    <button type="button" class="btn ms-3 fw-bold">Search</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="my-content" class="py-3 mb-5">
+        <div class="container-fluid mb-3">
+            <div class="row">
+                <div class="col-lg-8 ms-5">
+                    <h1 class="fs-2 fw-bold">Welcome! Happy Shopping</h1>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid d-flex flex-column" style="gap: 2rem;">
+            <div class="row d-flex justify-content-evenly">
+                <div class="col-xxl-2 col-md-4 col-sm-6">
+                    <div class="card" style="width: 18rem; height: 100%;">
+                        <img src="./img/teko-bambang.jpg" class="card-img-top" alt="teko">
+                        <div class="card-body d-flex flex-column justify-content-between" style="gap: 1rem;">
+                            <div>
+                                <h5 class="card-title">Teko Bambang</h5>
+                                <p class="card-title fw-bold">Rp. 2.600.000</p>
+                                <p class="card-text">Keadaan teko baik tanpa lecet.</p>
+                            </div>
+                            <div class="d-flex justify-content-center beli-button">
+                                <a href="#" class="btn btn-primary">Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-2 col-md-4 col-sm-6">
+                    <div class="card" style="width: 18rem; height: 100%;">
+                        <img src="./img/guci-yanto.jpg" class="card-img-top" alt="guci">
+                        <div class="card-body d-flex flex-column justify-content-between" style="gap: 1rem;">
+                            <div>
+                                <h5 class="card-title">Guci Yanto</h5>
+                                <p class="card-title fw-bold">Rp. 5.600.000</p>
+                                <p class="card-text">Guci tanpa retak.</p>
+                            </div>
+                            <div class="d-flex justify-content-center beli-button">
+                                <a href="#" class="btn btn-primary">Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-2 col-md-4 col-sm-6">
+                    <div class="card" style="width: 18rem; height: 100%;">
+                        <img src="./img/kursi-anjar.jpg" class="card-img-top" alt="kursi">
+                        <div class="card-body d-flex flex-column justify-content-between" style="gap: 1rem;">
+                            <div>
+                                <h5 class="card-title">Kursi Bapak Anjar</h5>
+                                <p class="card-title fw-bold">Rp. 4.600.000</p>
+                                <p class="card-text">Kursi tanpa lecet.</p>
+                            </div>
+                            <div class="d-flex justify-content-center beli-button">
+                                <a href="#" class="btn btn-primary">Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-2 col-md-4 col-sm-6">
+                    <div class="card" style="width: 18rem; height: 100%;">
+                        <img src="./img/meja-makima.jpg" class="card-img-top" alt="meja">
+                        <div class="card-body d-flex flex-column justify-content-between" style="gap: 1rem;">
+                            <div>
+                                <h5 class="card-title">Meja Makima</h5>
+                                <p class="card-title fw-bold">Rp. 1.600.000</p>
+                                <p class="card-text">Meja mengkilat.</p>
+                            </div>
+                            <div class="d-flex justify-content-center beli-button">
+                                <a href="#" class="btn btn-primary">Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-2 col-md-4 col-sm-6">
+                    <div class="card" style="width: 18rem; height: 100%; height: 100%;">
+                        <img src="./img/jam-eren.jpg" class="card-img-top" alt="jam">
+                        <div class="card-body d-flex flex-column justify-content-between" style="gap: 1rem;">
+                            <div>
+                                <h5 class="card-title">Jam Eren</h5>
+                                <p class="card-title fw-bold">Rp. 8.600.000</p>
+                                <p class="card-text">Jam sedikit lecet di kaca.</p>
+                            </div>
+                            <div class="d-flex justify-content-center beli-button">
+                                <a href="#" class="btn btn-primary">Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-evenly">
+                <div class="col-xxl-2 col-md-4 col-sm-6">
+                    <div class="card" style="width: 18rem; height: 100%;">
+                        <img src="./img/lemari-oacan.jpg" class="card-img-top" alt="teko">
+                        <div class="card-body d-flex flex-column justify-content-between" style="gap: 1rem;">
+                            <div>
+                                <h5 class="card-title">Lemari Oacan</h5>
+                                <p class="card-title fw-bold">Rp. 7.600.000</p>
+                                <p class="card-text">Lemari pemain.</p>
+                            </div>
+                            <div class="d-flex justify-content-center beli-button">
+                                <a href="#" class="btn btn-primary">Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-2 col-md-4 col-sm-6">
+                    <div class="card" style="width: 18rem; height: 100%;">
+                        <img src="./img/meja-princess.jpg" class="card-img-top" alt="guci">
+                        <div class="card-body d-flex flex-column justify-content-between" style="gap: 1rem;">
+                            <div>
+                                <h5 class="card-title">Meja Princess</h5>
+                                <p class="card-title fw-bold">Rp. 4.600.000</p>
+                                <p class="card-text">Meja kokoh.</p>
+                            </div>
+                            <div class="d-flex justify-content-center beli-button">
+                                <a href="#" class="btn btn-primary">Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-2 col-md-4 col-sm-6">
+                    <div class="card" style="width: 18rem; height: 100%;">
+                        <img src="./img/kursi-bento.jpg" class="card-img-top" alt="kursi">
+                        <div class="card-body d-flex flex-column justify-content-between" style="gap: 1rem;">
+                            <div>
+                                <h5 class="card-title">Kursi Bento</h5>
+                                <p class="card-title fw-bold">Rp. 6.600.000</p>
+                                <p class="card-text">Kursi kokoh.</p>
+                            </div>
+                            <div class="d-flex justify-content-center beli-button">
+                                <a href="#" class="btn btn-primary">Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-2 col-md-4 col-sm-6">
+                    <div class="card" style="width: 18rem; height: 100%;">
+                        <img src="./img/cermin-kirani.jpeg" class="card-img-top" alt="meja">
+                        <div class="card-body d-flex flex-column justify-content-between" style="gap: 1rem;">
+                            <div>
+                                <h5 class="card-title">Cermin kirani</h5>
+                                <p class="card-title fw-bold">Rp. 8.300.000</p>
+                                <p class="card-text">Cermin Jernih.</p>
+                            </div>
+                            <div class="d-flex justify-content-center beli-button">
+                                <a href="#" class="btn btn-primary">Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-2 col-md-4 col-sm-6">
+                    <div class="card" style="width: 18rem; height: 100%; height: 100%;">
+                        <img src="./img/jam-eren.jpg" class="card-img-top" alt="jam">
+                        <div class="card-body d-flex flex-column justify-content-between" style="gap: 1rem;">
+                            <div>
+                                <h5 class="card-title">Jam Firda</h5>
+                                <p class="card-title fw-bold">Rp. 2.600.000</p>
+                                <p class="card-text">Jam kaku.</p>
+                            </div>
+                            <div class="d-flex justify-content-center beli-button">
+                                <a href="#" class="btn btn-primary">Beli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="my-detail" class="pt-5">
+        <div class="container-fluid d-flex justify-content-center py-5" style="background-color: black;">
+            <div class="d-flex flex-column align-items-center" style="gap: 2rem; width: 50%;">
+                <h1>-ANTIKFINDER-</h1>
+                <p>OUR STORE</p>
+                <p style="text-align: center;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum, deserunt culpa vitae accusamus quo quas iusto doloremque ex voluptatibus, omnis pariatur quia, illum magnam ab officiis excepturi possimus ut porro.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

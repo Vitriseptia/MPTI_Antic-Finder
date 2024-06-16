@@ -498,3 +498,69 @@
 }
 /*** Footer End ***/
 
+/*** Payment Start***/
+
+#colorButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#colorButton.clicked {
+    background-color: green; /* Warna setelah diklik */
+}
+
+.colorButton {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s, border-color 0.3s;
+    margin-right: 10px;
+}
+
+.colorButton.selected {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.colorButton:hover {
+    background-color: #e0e0e0;
+}
+
+.hidden {
+    display: none;
+}
+
+#preview {
+    margin-top: 20px;
+}
+
+#preview img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+
+.popup-form-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(117, 31, 31);
+    padding: 20px;
+    border: 1px solid #561212;
+    border-radius: 5px;
+}
+/*** Payment End***/
+

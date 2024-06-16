@@ -146,6 +146,71 @@
         }
         button.parent().parent().find('input').val(newVal);
     });
+//tambahan asna
+document.addEventListener('DOMContentLoaded', function() {
+    const radioButtons = document.querySelectorAll('input[name="payment"]');
+    const bankList = document.getElementById('bank-list');
+    const cod = document.getElementById('cod');
+
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.value === 'bank-transfer') {
+                bankList.classList.remove('hidden');
+                cod.classList.add('hidden');
+            } else {
+                bankList.classList.add('hidden');
+                cod.classList.remove('hidden');
+            }
+        });
+    });
+});
+
+$(document).ready(function() {
+    $('.change-button').on('click', function() {
+        $('#options').toggleClass('hidden');
+    });
+});
+
+document.getElementById('fileInput').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const previewImage = document.getElementById('previewImage');
+            previewImage.src = e.target.result;
+            previewImage.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+document.getElementById('uploadForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Mencegah pengiriman form standar
+
+    const formData = new FormData();
+    const fileInput = document.getElementById('fileInput');
+    const file = fileInput.files[0];
+    if (file) {
+        formData.append('image', file);
+
+        // Kirim form menggunakan fetch atau metode lainnya
+        fetch('/upload', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); // Tampilkan hasil respons dari server
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    } else {
+        alert('Pilih gambar terlebih dahulu.');
+    }
+});
+
+
 
 })(jQuery);
 

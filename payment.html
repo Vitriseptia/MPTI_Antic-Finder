@@ -106,10 +106,40 @@
         </div>
         <!-- Modal Search End -->
 
+        
 
         <!-- Cart Page Start -->
         <div class="container-fluid py-5">
             <div class="container py-5">
+
+            <hr>
+
+        <!--ALAMAT-->
+        <div class="d-flex justify-content-between align-items-center mb-0">
+            <h5 class="mb-0 me-4">Asqina Salsabila</h5>
+            <p class="mb-0">Jalan Maju Mundur</p>
+            <button class="change-button">Change</button>
+        </div>
+        <div id="options" class="hidden">
+            <label class="radio-button">
+                <input type="radio" name="option" value="option1">
+                <span>Option 1</span>
+            </label>
+            <br>
+            <label class="radio-button">
+                <input type="radio" name="option" value="option2">
+                <span>Option 2</span>
+            </label>
+            <br>
+            <label class="radio-button">
+                <input type="radio" name="option" value="option3">
+                <span>Tambah</span>
+            </label>
+        </div>
+        <script src="main.js"></script>
+
+        <hr>
+            <div class="d-flex justify-content-center" style="gap: 3rem;">
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -183,38 +213,10 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- <div class="mt-5">
-                    <input type="text" class="border-0 border-bottom rounded me-5 py-3 mb-4" placeholder="Coupon Code">
-                    <button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button">Apply Coupon</button>
-                </div> -->
 
-                <!--ALAMAT-->
-                <div class="d-flex justify-content-between mb-4">
-                    <h5 class="mb-0 me-4">Asqina Salsabila</h5>
-                    <p>서울특별시 성동구 왕십리로 83-21 에스엠엔터테인먼트 83-21, Wangsimni-ro, Seongdong-gu, Seoul, Republic of Korea</p>
-                    <button class="change-button">Change</button>
-                </div>
-                <div id="options" class="hidden">
-                    <label class="radio-button">
-                        <input type="radio" name="option" value="option1">
-                        <span>Option 1</span>
-                    </label>
-                    <br>
-                    <label class="radio-button">
-                        <input type="radio" name="option" value="option2">
-                        <span>Option 2</span>
-                    </label>
-                    <br>
-                    <label class="radio-button">
-                        <input type="radio" name="option" value="option3">
-                        <span>Tambah</span>
-                    </label>
-                </div>
-                <script src="main.js"></script>
-            
                 <!--METODE PEMBAYARAN-->
-                <div>
-                    <div class="d-flex justify-content-between mb-4">
+                <div class="card p-4 w-50" style="background-color: lightgray;">
+                    <div class="d-flex flex-column justify-content-between mb-4">
                         <h5 class="mb-0 me-4">Metode Pembayaran :</h5>
                         <label class="radio-button">
                             <input type="radio" name="payment" value="cod" required>
@@ -229,8 +231,8 @@
                         <p>COD: Cash on Delivery</p>
                     </div>
                     <div id="bank-list" class="hidden">
-                        <p>Silahkan transfer ke nomor rekening berikut:</p>
-                        <h5 class="mb-0 me-4">BRI - 7876849754987</h5>
+                        <p>Nomor Rekening:</p>
+                        <h5 class="mb-3 me-4">BRI - 7876849754987</h5>
                         <form id="uploadForm">
                             <label for="fileInput">Pilih gambar untuk diunggah:</label>
                             <input type="file" id="fileInput" name="image" accept="image/*">
@@ -242,8 +244,16 @@
                         </form>
                     </div>
                 </div>
-                <script src="main.js"></script>
             </div>
+                
+                <!-- <div class="mt-5">
+                    <input type="text" class="border-0 border-bottom rounded me-5 py-3 mb-4" placeholder="Coupon Code">
+                    <button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button">Apply Coupon</button>
+                </div> -->
+            
+                
+                <script src="main.js"></script>
+            </div> <!-- IKI NGGONE SOPO -->
             <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">Checkout</button>
         </div>
         <!-- Cart Page End -->

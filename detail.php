@@ -1,3 +1,26 @@
+<?php
+    require 'koneksi.php';
+
+    if (isset($_GET['id'])){
+        $id = $_GET['id'];
+        $sql = "SELECT * FROM barang WHERE id = ?";
+        $res = $connection->prepare($sql);
+        $res->execute([$id]);
+        $data = $res->fetch();
+
+        if ($data){
+            $idData = $data['id'];
+            $namaData = $data['nama'];
+            $hargaData = $data['harga'];
+            $deskripsiData = $data['deskripsi'];
+            $gambarData = $data['gambar'];
+            $jenisData = $data['jenis'];
+            $ratingData = $data['rating'];
+            $kondisiData = $data['kondisi'];
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,15 +65,15 @@
         <div class="container-fluid fixed-top">
             <div class="container px-0">
                 <nav class="navbar navbar-light bg-white navbar-expand-xl">
-                    <a href="index.html" class="navbar-brand"><h1 class="text-primary display-6">AnticFinder</h1></a>
+                    <a href="index.php" class="navbar-brand"><h1 class="text-primary display-6">AnticFinder</h1></a>
                     <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars text-primary"></span>
                     </button>
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
-                            <a href="#" class="nav-item nav-link">Products</a>
-                            <a href="#" class="nav-item nav-link">Testimonials</a>
-                            <a href="#" class="nav-item nav-link">Contacts</a>
+                            <a href="index.php" class="nav-item nav-link">Products</a>
+                            <a href="index.php#testimonials" class="nav-item nav-link">Testimonials</a>
+                            <a href="index.php#footer" class="nav-item nav-link">Contacts</a>
                             <a href="cart.html" class="nav-item nav-link">Cart</a>
                         </div>
                         <div class="d-flex m-3 me-0 align-items-center">
@@ -114,25 +137,28 @@
                     <div class="col-lg-8 col-xl-9">
                         <div class="row g-4">
                             <div class="col-lg-6">
-                                <div class="border rounded">
+                                <div class="border rounded d-flex justify-content-center">
                                     <a href="#">
-                                        <img src="img/my-img/furniture/teko-bambang.jpg" class="img-fluid rounded" alt="Image">
+                                        <img src="<?php echo $gambarData; ?>" class="img-fluid rounded" alt="Image">
                                     </a>
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <h4 class="fw-bold mb-3">Teko Bambang</h4>
-                                <p class="mb-3">Category: Furniture</p>
-                                <h5 class="fw-bold mb-3">Rp. 2.600.0000</h5>
+                                <h4 class="fw-bold mb-3"><?php echo $namaData; ?></h4>
+                                <p class="mb-3">Category: <?php echo $jenisData; ?></p>
+                                <h5 class="fw-bold mb-3">Rp. <?php echo number_format($hargaData, 2, ".", ","); ?></h5>
                                 <div class="d-flex mb-4">
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star"></i>
+                                    <?php
+                                    for($i = 0 ; $i<5; $i++) { 
+                                        if ($i<$ratingData) {
+                                            echo '<i class="fa fa-star text-secondary"></i>';
+                                        }else{
+                                            echo '<i class="fa fa-star"></i>';
+                                        }
+                                    };
+                                    ?>
                                 </div>
-                                <p class="mb-4">Keadaan teko baik tanpa lecet </p>
-                                <p class="mb-4">Teko ini pernah dipakai pada masa penjajahan Indonesia.</p>
+                                <p class="mb-4"> <?php echo $deskripsiData; ?> </p>
                                 <div class="input-group quantity mb-5" style="width: 100px;">
                                     <div class="input-group-btn">
                                         <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
@@ -161,8 +187,7 @@
                                 </nav>
                                 <div class="tab-content mb-5">
                                     <div class="tab-pane active" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
-                                        <p>Teko ini pernah dipakai pada masa penjajahan Indonesia</p>
-                                        <p>Cocok untuk pajangan hiasan rumah agar menjadi lebih cantik lagi.</p>
+                                        <p><?php echo $deskripsiData; ?></p>
                                         <div class="px-2">
                                             <div class="row g-4">
                                                 <div class="col-6">
@@ -171,7 +196,7 @@
                                                             <p class="mb-0">Kodisi</p>
                                                         </div>
                                                         <div class="col-6">
-                                                            <p class="mb-0">Bekas</p>
+                                                            <p class="mb-0"><?php echo $kondisiData; ?></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -256,85 +281,42 @@
                     </div>
                 </div>
             </div>
-           
+
                 <h1 class="fw-bold mb-0">Related products</h1>
                 <div class="vesitable">
                     <div class="owl-carousel vegetable-carousel justify-content-center">
-                        <div class="border border-primary rounded position-relative vesitable-item">
-                            <div class="vesitable-img">
-                                <img src="img/my-img/furniture/cermin-kirani.jpeg" class="img-fluid w-100 rounded-top" alt="">
-                            </div>
-                            <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Furniture</div>
-                            <div class="p-4 pb-0 rounded-bottom text-center"> 
-                                <h4>Cermin kirani</h4>
-                                <p>Cermin Jernih</p>
-                                <div class="d-flex flex-column justify-content-center flex-lg-wrap">
-                                    <p class="text-dark fs-5 fw-bold">Rp 8.300.000</p>
-                                    <a href="#" class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="border border-primary rounded position-relative vesitable-item">
-                            <div class="vesitable-img">
-                                <img src="img/my-img/furniture/guci-yanto.jpg" class="img-fluid w-100 rounded-top" alt="">
-                            </div>
-                            <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Furniture</div>
-                            <div class="p-4 pb-0 rounded-bottom text-center"> 
-                                <h4>Guci Yanyo</h4>
-                                <p>Guci tanpa retak</p>
-                                <div class="d-flex flex-column justify-content-center flex-lg-wrap">
-                                    <p class="text-dark fs-5 fw-bold">Rp 5.600.000</p>
-                                    <a href="#" class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
+                    <?php
+                        $sql = "SELECT * FROM barang WHERE jenis = ? AND id != ? LIMIT 5";
+                        $stmt = $connection->prepare($sql);
+                        $stmt->execute([$jenisData, $idData]);
+                        $res = $stmt->fetchAll();
+                
+                        foreach ($res as $result) {
+                            $idResult = $result['id'];
+                            $namaResult = $result['nama'];
+                            $hargaResult = $result['harga'];
+                            $deskripsiResult = $result['deskripsi'];
+                            $gambarResult = $result['gambar'];
+                            $jenisResult = $result['jenis'];
+                            $ratingResult = $result['rating'];
+                            $kondisiResult = $result['kondisi'];
 
-                        <div class="border border-primary rounded position-relative vesitable-item">
-                            <div class="vesitable-img">
-                                <img src="img/my-img/furniture/jam-eren.jpg" class="img-fluid w-100 rounded-top bg-light" alt="">
-                            </div>
-                            <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Funiture</div>
-                            <div class="p-4 pb-0 rounded-bottom">
-                                <h4>Jam Eren</h4>
-                                <p>Jam sedikit lecet dikaca</p>
-                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                    <p class="text-dark fs-5 fw-bold">Rp 8.600.000</p>
-                                    <a href="#" class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="border border-primary rounded position-relative vesitable-item">
-                            <div class="vesitable-img">
-                                <img src="img/my-img/furniture/jam-firda.jpg" class="img-fluid w-100 rounded-top" alt="">
-                            </div>
-                            <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Funiture</div>
-                            <div class="p-4 pb-0 rounded-bottom">
-                                <h4>Jam Firda</h4>
-                                <p>Jam kaku</p>
-                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                    <p class="text-dark fs-5 fw-bold">Rp 2.600.000</p>
-                                    <a href="#" class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="border border-primary rounded position-relative vesitable-item">
-                            <div class="vesitable-img">
-                                <img src="img/my-img/furniture/kursi-anjar.jpg" class="img-fluid w-100 rounded-top" alt="">
-                            </div>
-                            <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Funiture</div>
-                            <div class="p-4 pb-0 rounded-bottom">
-                                <h4>Kursi Bapak Anjar</h4>
-                                <p>Kursi tanpa lecet</p>
-                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                    <p class="text-dark fs-5 fw-bold">Rp 4.600.000</p>
-                                    <a href="#" class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-
+                            echo '<div class="border border-primary rounded position-relative vesitable-item">
+                                    <div class="vesitable-img" style="max-height: 18rem;">
+                                        <img src="'.$gambarResult.'" class="img-fluid w-100 h-100 rounded-top" alt="">
+                                    </div>
+                                    <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">'.$jenisResult.'</div>
+                                    <div class="p-4 pb-0 rounded-bottom text-center"> 
+                                        <h4>'.$namaResult.'</h4>
+                                        <p>'.$deskripsiResult.'</p>
+                                        <div class="d-flex flex-column justify-content-center flex-lg-wrap">
+                                            <p class="text-dark fs-5 fw-bold">Rp '. number_format($hargaResult, 2, ".", ",").'</p>
+                                            <a href="detail.php?id='.$idResult.'" class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                        </div>
+                                    </div>
+                                </div>';
+                        }
+                    ?>
                     </div>
                 </div>
             </div>

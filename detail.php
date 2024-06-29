@@ -286,7 +286,7 @@
                                         <p>'.$deskripsiResult.'</p>
                                         <div class="d-flex flex-column justify-content-center flex-lg-wrap">
                                             <p class="text-dark fs-5 fw-bold">Rp '. number_format($hargaResult, 2, ".", ",").'</p>
-                                            <a href="detail.php?id='.$idResult.'" class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                            <a href="detail.php?id='.$idResult.'" class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Buy Now</a>
                                         </div>
                                     </div>
                                 </div>';

@@ -1,22 +1,50 @@
 <?php
     require 'koneksi.php';
 
-    if (isset($_POST['login'])) {
+    $email = "";
+    $password = "";
+    $confirm_password = "";
+
+    if (isset($_POST['register'])) {
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $query = "SELECT * FROM user WHERE email = ? AND password = ?";
-        $stmt = $connection->prepare($query);
-        $stmt->execute([$email, $password]);
-        $hasil = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($hasil){
+        $confirm_password = $_POST['confirm-password'];
+
+        if ($email == "") {
+            ?>
+                <script>alert("Email Kosong!!!");</script>
+            <?php
+        }
+
+        if ($password == "") {
+            ?>
+                <script>alert("Password Kosong!!!");</script>
+            <?php
+        }
+
+        if ($confirm_password == "") {
+            ?>
+                <script>alert("Konfirmasi Password Kosong!!!");</script>
+            <?php
+        }
+
+        if ($password == $confirm_password) {
+            $query = "INSERT INTO user (email, password) VALUES (?, ?)";
+            $stmt = $connection->prepare($query);
+            $stmt->execute([$email, $password]);
+            $sql = "SELECT * FROM user WHERE email = ? AND password = ?";
+            $stmt = $connection->prepare($sql);
+            $stmt->execute([$email, $password]);
+            $data = $stmt->fetch(PDO::FETCH_ASSOC);
             session_start();
-            $_SESSION['email'] = $email;
-            $_SESSION['id'] = $hasil['id'];
-            if ($hasil['nama'] !== null) {
-                $_SESSION['nama'] = $hasil['nama'];
-            }
+            $_SESSION['id'] = $data['id'];
+            $_SESSION['email'] = $data['email'];
             header('Location: main.php');
             exit;
+        }else{
+            ?>
+                <script>alert("Password dan Konfirmasi Password Berbeda!!!");</script>
+            <?php
         }
     }
 ?>
@@ -26,7 +54,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AntikFinder</title>
+    <title>AntikFinder - Register</title>
     <style>
         * {
             box-sizing: border-box;
@@ -73,30 +101,30 @@
             border-radius: 10px;
         }
 
-        .login-form {
+        .register-form {
             width: 100%;
             max-width: 300px;
         }
 
-        .login-form h2 {
+        .register-form h2 {
             margin-bottom: 20px;
             font-size: 20px;
             color: #333;
         }
 
-        .login-form form {
+        .register-form form {
             display: flex;
             flex-direction: column;
         }
 
-        .login-form input {
+        .register-form input {
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
 
-        .login-form button {
+        .register-form button {
             padding: 10px;
             background-color: #7db340;
             color: #fff;
@@ -105,18 +133,30 @@
             cursor: pointer;
         }
 
-        .login-form button:hover {
+        .register-form button:hover {
             background-color: #6ca32a;
         }
 
-        .login-form p {
+        .register-form p {
             margin-top: 10px;
             color: #666;
         }
 
-        .login-form a {
+        .register-form a {
             color: #7db340;
             text-decoration: none;
+        }
+
+        .register-form .terms {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .register-form .terms input {
+            margin-right: 5px;
         }
 
         @media (min-width: 768px) {
@@ -137,13 +177,17 @@
         <div class="logo">AntikFinder</div>
         <div class="content">
             <img src="img/my-img/cover.jpg" alt="Antique Vase" class="antique-image">
-            <div class="login-form">
-                <h2>Login</h2>
+            <div class="register-form">
+                <h2>Register</h2>
                 <form method="post">
                     <input name="email" type="text" placeholder="Masukkan Email" required>
                     <input name="password" type="password" placeholder="Masukkan Password" required>
-                    <button name="login" type="submit">Login</button>
-                    <p>Jika belum punya akun <a href="register.php">Sign up</a></p>
+                    <input name="confirm-password" type="password" placeholder="Masukkan Konfirmasi Password" required>
+                    <div class="terms">
+                        <input type="checkbox" required>
+                        <label>By creating your account you agree with to our <a href="#">Terms and Conditions</a>.</label>
+                    </div>
+                    <button name="register" type="submit">Sign up</button>
                 </form>
             </div>
         </div>

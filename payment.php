@@ -1,5 +1,21 @@
 <?php
+require 'koneksi.php';
+
 session_start();
+
+if (!isset($_SESSION['nama'])) {
+    $namaUser = $_SESSION['email'];
+}else{
+    $namaUser = $_SESSION['nama'];
+}
+
+$sql = "SELECT * FROM user WHERE id = ?";
+$res = $connection->prepare($sql);
+$res->execute([$_SESSION['id']]);
+$data = $res->fetch(PDO::FETCH_ASSOC);
+if($data){
+    $alamatUser = $data['alamat'];
+}
 
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
@@ -52,14 +68,14 @@ $cart = $_SESSION['cart'];
         <div class="container-fluid fixed-top">
             <div class="container px-0">
                 <nav class="navbar navbar-light bg-white navbar-expand-xl">
-                    <a href="index.php" class="navbar-brand"><h1 class="text-primary display-6">AnticFinder</h1></a>
+                    <a href="main.php" class="navbar-brand"><h1 class="text-primary display-6">AnticFinder</h1></a>
                     <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars text-primary"></span>
                     </button>
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
-                            <a href="index.php" class="nav-item nav-link ">Products</a>
-                            <a href="index.php#footer" class="nav-item nav-link">Contacts</a>
+                            <a href="main.php" class="nav-item nav-link ">Products</a>
+                            <a href="main.php#footer" class="nav-item nav-link">Contacts</a>
                             <a href="cart.php" class="nav-item nav-link active">Cart</a>
                         </div>
                         <div class="d-flex m-3 me-0 align-items-center">
@@ -67,7 +83,7 @@ $cart = $_SESSION['cart'];
                             <div class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle rounded-bottom rounded-top border border-secondary href="#" id="userDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small me-2">Kiraniwww</span>
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small me-2"><?php echo $namaUser ?></span>
                                     <img class="img-profile rounded-circle" src="img/my-img/temp/undraw_profile.svg" style="height: 2rem; width: 2rem;">
                                 </a>
                                 <!-- Dropdown - User Information -->
@@ -82,7 +98,7 @@ $cart = $_SESSION['cart'];
                                         Settings
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
+                                    <a href="logout.php" class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Logout
                                     </a>
@@ -125,8 +141,8 @@ $cart = $_SESSION['cart'];
 
         <!--ALAMAT-->
         <div class="d-flex justify-content-start align-items-center mb-0">
-            <h5 class="mb-0" style="margin-right: 20rem;">Asqina Salsabila</h5>
-            <p class="mb-0">Jalan Maju Mundur</p>
+            <h5 class="mb-0" style="margin-right: 20rem;"><?php echo $namaUser ?></h5>
+            <p class="mb-0"><?php echo $alamatUser ?></p>
         </div>
         <script src="main.js"></script>
 

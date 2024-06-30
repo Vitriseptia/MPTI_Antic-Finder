@@ -7,25 +7,6 @@
     }else{
         $namaUser = $_SESSION['nama'];
     }
-
-    if (isset($_GET['id'])){
-        $id = $_GET['id'];
-        $sql = "SELECT * FROM barang WHERE id = ?";
-        $res = $connection->prepare($sql);
-        $res->execute([$id]);
-        $data = $res->fetch();
-
-        if ($data){
-            $idData = $data['id'];
-            $namaData = $data['nama'];
-            $hargaData = $data['harga'];
-            $deskripsiData = $data['deskripsi'];
-            $gambarData = $data['gambar'];
-            $jenisData = $data['jenis'];
-            $ratingData = $data['rating'];
-            $kondisiData = $data['kondisi'];
-        }
-    }
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +14,7 @@
 
     <head>
         <meta charset="utf-8">
-        <title>Fruitables - Vegetable Website Template</title>
+        <title>AnticFinder</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -44,13 +25,13 @@
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet"> 
 
         <!-- Icon Font Stylesheet -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
         <!-- Libraries Stylesheet -->
         <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
 
         <!-- Customized Bootstrap Stylesheet -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -78,8 +59,8 @@
                     </button>
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
-                            <a href="main.php" class="nav-item nav-link">Products</a>
-                            <a href="main.php#footer" class="nav-item nav-link">Contacts</a>
+                            <a href="main.php" class="nav-item nav-link active">Products</a>
+                            <a href="#footer" class="nav-item nav-link">Contacts</a>
                             <a href="cart.php" class="nav-item nav-link">Cart</a>
                         </div>
                         <div class="d-flex m-3 me-0 align-items-center">
@@ -87,7 +68,7 @@
                             <div class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle rounded-bottom rounded-top border border-secondary href="#" id="userDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small me-2"><?php echo $namaUser; ?></span>
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small me-2"><?php echo $namaUser ?></span>
                                     <img class="img-profile rounded-circle" src="img/my-img/temp/undraw_profile.svg" style="height: 2rem; width: 2rem;">
                                 </a>
                                 <!-- Dropdown - User Information -->
@@ -135,118 +116,70 @@
         </div>
         <!-- Modal Search End -->
 
-
-        <!-- Single Product Start -->
-        <div class="container-fluid py-5 mt-5">
+        <!-- Antic finder Start-->
+        <div class="container-fluid fruite py-5">
             <div class="container py-5">
-                <div class="row g-4 mb-5">
-                    <div class="col-lg-8 col-xl-9">
-                        <div class="row g-4">
-                            <div class="col-lg-6">
-                                <div class="border rounded d-flex justify-content-center">
-                                    <a href="#">
-                                        <img src="<?php echo $gambarData; ?>" class="img-fluid rounded" alt="Image">
+                <div class="tab-class text-center">
+                    <div class="row g-4">
+                        <div class="col-lg-4 text-start">
+                            <h1>Our Products</h1>
+                        </div>
+                        <div class="col-lg-8 text-end">
+                            <ul class="nav nav-pills d-inline-flex text-center mb-5">
+                                <li class="nav-item">
+                                    <a class="d-flex m-2 py-2 bg-light rounded-pill active" data-bs-toggle="pill" href="#tab-1">
+                                        <span class="text-dark" style="width: 130px;">All Products</span>
                                     </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <h4 class="fw-bold mb-3"><?php echo $namaData; ?></h4>
-                                <h5 class="fw-bold mb-3">Rp. <?php echo number_format($hargaData, 2, ".", ","); ?></h5>
-                                <p class="mb-4"> <?php echo $deskripsiData; ?> </p>
-                                <div class="input-group quantity mb-5" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm text-center border-0" value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <form action="list-cart.php" method="POST">
-                                    <input type="hidden" name="id" value="<?php echo $idData; ?>">
-                                    <input type="hidden" name="nama" value="<?php echo $namaData; ?>">
-                                    <input type="hidden" name="harga" value="<?php echo $hargaData; ?>">
-                                    <input type="hidden" name="gambar" value="<?php echo $gambarData; ?>">
-                                    <button type="submit" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</button>
-                                </form>
-                            </div>
-                            <div class="col-lg-12">
-                                <nav>
-                                    <div class="nav nav-tabs mb-3">
-                                        <button class="nav-link active border-white border-bottom-0" type="button" role="tab"
-                                            id="nav-about-tab" data-bs-toggle="tab" data-bs-target="#nav-about"
-                                            aria-controls="nav-about" aria-selected="true">Description</button>
-                                    </div>
-                                </nav>
-                                <div class="tab-content mb-5">
-                                    <div class="tab-pane active" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
-                                        <p><?php echo $deskripsiData; ?></p>
-                                        <div class="px-2">
-                                            <div class="row g-4">
-                                                <div class="col-6">
-                                                    <div class="row bg-light align-items-center text-center justify-content-center py-2">
-                                                        <div class="col-6">
-                                                            <p class="mb-0">Kodisi</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane fade show p-0 active">
+                            <div class="row g-4">
+                                <div class="col-lg-12">
+                                    <div class="row g-4 align-items-stretch">
+                                        
+                                        <?php
+                                        $sql = "SELECT * FROM barang";
+                                        $result = $connection->query($sql);
+                                        $result->execute();
+                                        foreach($result as $data){
+                                            $idData = $data['id'];
+                                            $namaData = $data['nama'];
+                                            $hargaData = $data['harga'];
+                                            $deskripsiData = $data['deskripsi'];
+                                            $gambarData = $data['gambar'];
+                                            $jenisData = $data['jenis'];
+
+                                            echo '<div class="col-md-6 col-lg-4 col-xl-3">
+                                                <div class="rounded position-relative fruite-item d-flex flex-column">
+                                                    <div class="fruite-img" style="height: 16rem;">
+                                                        <img src="' . $data['gambar'] . '" class="img-fluid w-100 rounded-top" style="object-fit: cover;" alt="">
+                                                    </div>
+                                                    <div class="d-flex flex-column justify-content-between p-4 border border-secondary border-top-0 rounded-bottom" style="flex-grow: 1;">
+                                                        <div>
+                                                            <h4>' . $data['nama'] . '</h4>
+                                                            <p>' . $data['deskripsi'] . '</p>
                                                         </div>
-                                                        <div class="col-6">
-                                                            <p class="mb-0"><?php echo $kondisiData; ?></p>
+                                                        <div class="d-flex flex-column justify-content-center flex-lg-wrap">
+                                                            <p class="text-dark fs-5 fw-bold mb-2">Rp. ' . number_format($data['harga'], 2, ".", ",") . '</p>
+                                                            <a href="detail.php?id=' . $data['id'] . '" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Buy Now</a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
+                                            </div>';
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-
-                <h1 class="fw-bold mb-0">Related products</h1>
-                <div class="vesitable">
-                    <div class="owl-carousel vegetable-carousel justify-content-center">
-                    <?php
-                        $sql = "SELECT * FROM barang WHERE jenis = ? AND id != ? LIMIT 5";
-                        $stmt = $connection->prepare($sql);
-                        $stmt->execute([$jenisData, $idData]);
-                        $res = $stmt->fetchAll();
-                
-                        foreach ($res as $result) {
-                            $idResult = $result['id'];
-                            $namaResult = $result['nama'];
-                            $hargaResult = $result['harga'];
-                            $deskripsiResult = $result['deskripsi'];
-                            $gambarResult = $result['gambar'];
-                            $jenisResult = $result['jenis'];
-                            $ratingResult = $result['rating'];
-                            $kondisiResult = $result['kondisi'];
-
-                            echo '<div class="border border-primary rounded position-relative vesitable-item">
-                                    <div class="vesitable-img" style="max-height: 18rem;">
-                                        <img src="'.$gambarResult.'" class="img-fluid w-100 h-100 rounded-top" alt="">
-                                    </div>
-                                    <div class="p-4 pb-0 rounded-bottom text-center"> 
-                                        <h4>'.$namaResult.'</h4>
-                                        <p>'.$deskripsiResult.'</p>
-                                        <div class="d-flex flex-column justify-content-center flex-lg-wrap">
-                                            <p class="text-dark fs-5 fw-bold">Rp '. number_format($hargaResult, 2, ".", ",").'</p>
-                                            <a href="detail.php?id='.$idResult.'" class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Buy Now</a>
-                                        </div>
-                                    </div>
-                                </div>';
-                        }
-                    ?>
-                    </div>
-                </div>
+                </div>      
             </div>
         </div>
-        <!-- Single Product End -->
-    
+        <!-- Fruits Shop End-->
 
         <!-- Footer Start -->
         <div id="footer" class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
@@ -311,13 +244,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
-                    </div>
-                    <div class="col-md-6 my-auto text-center text-md-end text-white">
-                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
+                        <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>AnticFinder</a>, All right reserved.</span>
                     </div>
                 </div>
             </div>

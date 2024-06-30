@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
+
+$cart = $_SESSION['cart'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,16 +52,16 @@
         <div class="container-fluid fixed-top">
             <div class="container px-0">
                 <nav class="navbar navbar-light bg-white navbar-expand-xl">
-                    <a href="index.html" class="navbar-brand"><h1 class="text-primary display-6">AnticFinder</h1></a>
+                    <a href="index.php" class="navbar-brand"><h1 class="text-primary display-6">AnticFinder</h1></a>
                     <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars text-primary"></span>
                     </button>
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
-                            <a href="index.html" class="nav-item nav-link ">Products</a>
-                            <a href="#" class="nav-item nav-link">Testimonials</a>
-                            <a href="#" class="nav-item nav-link">Contacts</a>
-                            <a href="#" class="nav-item nav-link active">Cart</a>
+                            <a href="index.php" class="nav-item nav-link ">Products</a>
+                            <a href="index.php#testimonials" class="nav-item nav-link">Testimonials</a>
+                            <a href="index.php#footer" class="nav-item nav-link">Contacts</a>
+                            <a href="cart.php" class="nav-item nav-link active">Cart</a>
                         </div>
                         <div class="d-flex m-3 me-0 align-items-center">
                             <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>
@@ -123,115 +133,48 @@
                           </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">
-                                    <div class="d-flex align-items-center">
-                                        <img src="img/my-img/furniture/cermin-kirani.jpeg" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
-                                    </div>
-                                </th>
-                                <td>
-                                    <p class="mb-0 mt-4">Cermin Kirani</p>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">Rp 8.300.000</p>
-                                </td>
-                                <td>
-                                    <div class="input-group quantity mt-4" style="width: 100px;">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
-                                            <i class="fa fa-minus"></i>
-                                            </button>
-                                        </div>
-                                        <input type="text" class="form-control form-control-sm text-center border-0" value="1">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">Rp 8.300.000</p>
-                                </td>
-                                <td>
-                                    <button class="btn btn-md rounded-circle bg-light border mt-4" >
-                                        <i class="fa fa-times text-danger"></i>
-                                    </button>
-                                </td>
-                            
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="d-flex align-items-center">
-                                        <img src="img/my-img/furniture/guci-yanto.jpg" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="" alt="">
-                                    </div>
-                                </th>
-                                <td>
-                                    <p class="mb-0 mt-4">Guci Yanto</p>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">Rp 5.600.000</p>
-                                </td>
-                                <td>
-                                    <div class="input-group quantity mt-4" style="width: 100px;">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
-                                            <i class="fa fa-minus"></i>
-                                            </button>
-                                        </div>
-                                        <input type="text" class="form-control form-control-sm text-center border-0" value="1">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">Rp 5.600.000</p>
-                                </td>
-                                <td>
-                                    <button class="btn btn-md rounded-circle bg-light border mt-4" >
-                                        <i class="fa fa-times text-danger"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="d-flex align-items-center">
-                                        <img src="img/my-img/furniture/kursi-anjar.jpg" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="" alt="">
-                                    </div>
-                                </th>
-                                <td>
-                                    <p class="mb-0 mt-4">Kursi Bapak Anjar</p>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">Rp 4.600.000</p>
-                                </td>
-                                <td>
-                                    <div class="input-group quantity mt-4" style="width: 100px;">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
-                                            <i class="fa fa-minus"></i>
-                                            </button>
-                                        </div>
-                                        <input type="text" class="form-control form-control-sm text-center border-0" value="1">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">Rp 4.600.000</p>
-                                </td>
-                                <td>
-                                    <button class="btn btn-md rounded-circle bg-light border mt-4" >
-                                        <i class="fa fa-times text-danger"></i>
-                                    </button>
-                                </td>
-                            </tr>
+
+                            <?php
+                                foreach($cart as $item){
+                                    echo '<tr>
+                                            <th scope="row">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="' . $item['gambar'] . '" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
+                                                </div>
+                                            </th>
+                                            <td>
+                                                <p class="mb-0 mt-4">' . $item['nama'] . '</p>
+                                            </td>
+                                            <td>
+                                                <p class="mb-0 mt-4">Rp ' . number_format($item['harga'], 2, ",", ".") . '</p>
+                                            </td>
+                                            <td>
+                                                <div class="input-group quantity mt-4" style="width: 100px;">
+                                                    <div class="input-group-btn">
+                                                    <button class="btn btn-sm btn-minus rounded-circle bg-light border" onclick="updateQuantity(this, '. $item['harga'] .', -1)">
+                                                    <i class="fa fa-minus"></i>
+                                                    </button>
+                                                    </div>
+                                                    <input type="text" class="form-control form-control-sm text-center border-0" value="1" onchange="updateTotal(this, '. $item['harga'] .')">
+                                                    <div class="input-group-btn">
+                                                        <button class="btn btn-sm btn-plus rounded-circle bg-light border" onclick="updateQuantity(this, '. $item['harga'] .', 1)">
+                                                            <i class="fa fa-plus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="mb-0 mt-4 total-price">Rp. ' . number_format($item['harga'], 2, ",", ".") . '</p>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-md rounded-circle bg-light border mt-4" onclick="removeItem('. $item['id'] .')">
+                                                    <i class="fa fa-times text-danger"></i>
+                                                </button>
+                                            </td>
+                                        
+                                        </tr>';
+                                }
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -246,20 +189,19 @@
                             <div class="p-4">
                                 <h1 class="display-6 mb-4">Cart <span class="fw-normal">Total</span></h1>
                                 <div class="d-flex justify-content-between mb-4">
-                                    <h5 class="mb-0 me-4">Subtotal:</h5>
-                                    <p class="mb-0">$96.00</p>
+                                    <h5 class="mb-0 me-4">Subtotal</h5>
+                                    <p class="mb-0" id="subtotal"></p>
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <h5 class="mb-0 me-4">Shipping</h5>
                                     <div class="">
-                                        <p class="mb-0">Flat rate: $3.00</p>
+                                        <p class="mb-0" id="shipping"></p>
                                     </div>
                                 </div>
-                                <p class="mb-0 text-end">Shipping to Ukraine.</p>
                             </div>
                             <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                                 <h5 class="mb-0 ps-4 me-4">Total</h5>
-                                <p class="mb-0 pe-4">$99.00</p>
+                                <p class="mb-0 pe-4" id="total"></p>
                             </div>
                             <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">Proceed Checkout</button>
                         </div>
@@ -366,7 +308,54 @@
         <!-- Back to Top -->
         <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
 
-        
+    <script>
+        function removeItem(itemId) {
+            // Lakukan permintaan AJAX ke server untuk menghapus item dari keranjang belanja
+            $.ajax({
+                type: 'POST',
+                url: 'remove-item.php', // Ganti dengan URL ke skrip server yang menangani penghapusan item
+                data: { itemId: itemId },
+                success: function(response) {
+                    // Berhasil menghapus, perbarui tampilan halaman atau item keranjang belanja
+                    location.reload(); // Untuk memuat ulang halaman
+                },
+            });
+        }
+
+        function updateQuantity(element, price, change) {
+            const input = element.parentElement.parentElement.querySelector('input');
+            let quantity = parseInt(input.value) + change;
+            if (quantity < 1) quantity = 1;
+            updateTotal(input, price, quantity);
+        }
+
+        function updateTotal(element, price, quantity) {
+            const row = element.parentElement.parentElement.parentElement;
+            const total = row.querySelector('.total-price');
+            const totalPrice = quantity * price;
+            total.innerText = 'Rp. ' + totalPrice.toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            updateCartTotal();
+        }
+
+        function updateCartTotal() {
+            const totals = document.querySelectorAll('.total-price');
+            let cartTotal = 0;
+            totals.forEach(function(total) {
+                const price = parseFloat(total.innerText.replace('Rp. ', '').replace(/\./g, '').replace(',', '.'));
+                cartTotal += price;
+            });
+            let shipping = cartTotal * 10 / 100;
+            let total = cartTotal + shipping;
+            document.getElementById('subtotal').innerText = 'Rp ' + cartTotal.toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('shipping').innerText = 'Rp ' + shipping.toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('total').innerText = 'Rp ' + total.toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        window.addEventListener('DOMContentLoaded', (event) => {
+            updateCartTotal();
+        });
+    </script>
+
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

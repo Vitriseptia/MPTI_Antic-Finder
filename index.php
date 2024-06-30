@@ -55,7 +55,7 @@
                             <a href="index.php" class="nav-item nav-link active">Products</a>
                             <a href="#testimonials" class="nav-item nav-link">Testimonials</a>
                             <a href="#footer" class="nav-item nav-link">Contacts</a>
-                            <a href="cart.html" class="nav-item nav-link">Cart</a>
+                            <a href="cart.php" class="nav-item nav-link">Cart</a>
                         </div>
                         <div class="d-flex m-3 me-0 align-items-center">
                             <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>

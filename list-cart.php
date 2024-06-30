@@ -11,7 +11,7 @@
         $id = $_POST['id'];
         $gambar = $_POST['gambar'];
     
-        $item = ['id' => $id, 'nama' => $nama, 'harga' => $harga, 'gambar' => $gambar];
+        $item = ['id' => $id, 'nama' => $nama, 'harga' => $harga, 'gambar' => $gambar, 'quantity' => 1, 'total' => $harga];
         $_SESSION['cart'][] = $item;
     }
 

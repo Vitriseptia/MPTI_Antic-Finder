@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antik Finder - Konfirmasi Pembayaran</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* CSS Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        header h1 {
+            font-size: 2em;
+        }
+
+        main {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        section h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        section p {
+            line-height: 1.8;
+        }
+
+        .confirmation {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #e6f7ff;
+            border: 1px solid #b3e0ff;
+            border-radius: 5px;
+        }
+
+        .btn-home {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-home:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="color: white;">Antik Finder - Konfirmasi Pembayaran</h1>
+    </header>
+    <main>
+        <div class="confirmation">
+            <h2>Pesanan Anda Telah Berhasil Dibuat!</h2>
+            <p>Terima kasih telah berbelanja di Antik Finder.</p>
+            <p>Kami telah menerima pembayaran Anda. Detail pesanan Anda akan segera diproses.</p>
+            <p>Silakan cek email Anda untuk informasi lebih lanjut.</p>
+            <!-- Tombol untuk kembali ke halaman utama -->
+            <a href="index.php" class="btn-home">Kembali ke Halaman Utama</a>
+            <a href="cancel.php" class="btn-home" style="background-color: red;">Cancel Pesanan</a>
+        </div>
+    </main>
+</body>
+</html>

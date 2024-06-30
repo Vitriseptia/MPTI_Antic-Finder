@@ -72,7 +72,6 @@
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
                             <a href="index.php" class="nav-item nav-link">Products</a>
-                            <a href="index.php#testimonials" class="nav-item nav-link">Testimonials</a>
                             <a href="index.php#footer" class="nav-item nav-link">Contacts</a>
                             <a href="cart.php" class="nav-item nav-link">Cart</a>
                         </div>
@@ -147,17 +146,6 @@
                                 <h4 class="fw-bold mb-3"><?php echo $namaData; ?></h4>
                                 <p class="mb-3">Category: <?php echo $jenisData; ?></p>
                                 <h5 class="fw-bold mb-3">Rp. <?php echo number_format($hargaData, 2, ".", ","); ?></h5>
-                                <div class="d-flex mb-4">
-                                    <?php
-                                    for($i = 0 ; $i<5; $i++) { 
-                                        if ($i<$ratingData) {
-                                            echo '<i class="fa fa-star text-secondary"></i>';
-                                        }else{
-                                            echo '<i class="fa fa-star"></i>';
-                                        }
-                                    };
-                                    ?>
-                                </div>
                                 <p class="mb-4"> <?php echo $deskripsiData; ?> </p>
                                 <div class="input-group quantity mb-5" style="width: 100px;">
                                     <div class="input-group-btn">
@@ -256,14 +244,14 @@
     
 
         <!-- Footer Start -->
-        <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
+        <div id="footer" class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
             <div class="container py-5">
                 <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
                     <div class="row g-4">
                         <div class="col-lg-3">
                             <a href="#">
-                                <h1 class="text-primary mb-0">Fruitables</h1>
-                                <p class="text-secondary mb-0">Fresh products</p>
+                                <h1 class="text-primary mb-0">AnticFinder</h1>
+                                <p class="text-secondary mb-0">Antic products</p>
                             </a>
                         </div>
                         <div class="col-lg-6">
@@ -274,7 +262,7 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="d-flex justify-content-end pt-3">
-                                <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-x-twitter"></i></a>
                                 <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
                                 <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-youtube"></i></a>
                                 <a class="btn btn-outline-secondary btn-md-square rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
@@ -282,24 +270,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="row g-5">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="footer-item">
-                            <h4 class="text-light mb-3">Why People Like us!</h4>
-                            <p class="mb-4">typesetting, remaining essentially unchanged. It was 
-                                popularised in the 1960s with the like Aldus PageMaker including of Lorem Ipsum.</p>
-                            <a href="" class="btn border-secondary py-2 px-4 rounded-pill text-primary">Read More</a>
-                        </div>
-                    </div>
+                <div class="row g-5 justify-content-between">
                     <div class="col-lg-3 col-md-6">
                         <div class="d-flex flex-column text-start footer-item">
-                            <h4 class="text-light mb-3">Shop Info</h4>
-                            <a class="btn-link" href="">About Us</a>
-                            <a class="btn-link" href="">Contact Us</a>
-                            <a class="btn-link" href="">Privacy Policy</a>
-                            <a class="btn-link" href="">Terms & Condition</a>
-                            <a class="btn-link" href="">Return Policy</a>
-                            <a class="btn-link" href="">FAQs & Help</a>
+                            <h4 class="text-light mb-3">Informations    </h4>
+                            <a class="btn-link" href="">Products</a>
+                            <a class="btn-link" href="">Contacts</a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
@@ -307,10 +283,7 @@
                             <h4 class="text-light mb-3">Account</h4>
                             <a class="btn-link" href="">My Account</a>
                             <a class="btn-link" href="">Shop details</a>
-                            <a class="btn-link" href="">Shopping Cart</a>
-                            <a class="btn-link" href="">Wishlist</a>
                             <a class="btn-link" href="">Order History</a>
-                            <a class="btn-link" href="">International Orders</a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">

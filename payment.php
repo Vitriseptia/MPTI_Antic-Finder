@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
+
+$cart = $_SESSION['cart'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,16 +52,15 @@
         <div class="container-fluid fixed-top">
             <div class="container px-0">
                 <nav class="navbar navbar-light bg-white navbar-expand-xl">
-                    <a href="index.html" class="navbar-brand"><h1 class="text-primary display-6">AnticFinder</h1></a>
+                    <a href="index.php" class="navbar-brand"><h1 class="text-primary display-6">AnticFinder</h1></a>
                     <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars text-primary"></span>
                     </button>
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
-                            <a href="index.html" class="nav-item nav-link ">Products</a>
-                            <a href="#" class="nav-item nav-link">Testimonials</a>
-                            <a href="#" class="nav-item nav-link">Contacts</a>
-                            <a href="#" class="nav-item nav-link active">Cart</a>
+                            <a href="index.php" class="nav-item nav-link ">Products</a>
+                            <a href="index.php#footer" class="nav-item nav-link">Contacts</a>
+                            <a href="cart.php" class="nav-item nav-link active">Cart</a>
                         </div>
                         <div class="d-flex m-3 me-0 align-items-center">
                             <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>
@@ -115,26 +124,9 @@
             <hr>
 
         <!--ALAMAT-->
-        <div class="d-flex justify-content-between align-items-center mb-0">
-            <h5 class="mb-0 me-4">Asqina Salsabila</h5>
+        <div class="d-flex justify-content-start align-items-center mb-0">
+            <h5 class="mb-0" style="margin-right: 20rem;">Asqina Salsabila</h5>
             <p class="mb-0">Jalan Maju Mundur</p>
-            <button class="change-button">Change</button>
-        </div>
-        <div id="options" class="hidden">
-            <label class="radio-button">
-                <input type="radio" name="option" value="option1">
-                <span>Option 1</span>
-            </label>
-            <br>
-            <label class="radio-button">
-                <input type="radio" name="option" value="option2">
-                <span>Option 2</span>
-            </label>
-            <br>
-            <label class="radio-button">
-                <input type="radio" name="option" value="option3">
-                <span>Tambah</span>
-            </label>
         </div>
         <script src="main.js"></script>
 
@@ -152,64 +144,29 @@
                           </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">
-                                    <div class="d-flex align-items-center">
-                                        <img src="img/my-img/furniture/cermin-kirani.jpeg" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
-                                    </div>
-                                </th>
-                                <td>
-                                    <p class="mb-0 mt-4">Cermin Kirani</p>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">Rp 8.300.000</p>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">1</p>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">Rp 8.300.000</p>
-                                </td>                                   
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="d-flex align-items-center">
-                                        <img src="img/my-img/furniture/guci-yanto.jpg" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="" alt="">
-                                    </div>
-                                </th>
-                                <td>
-                                    <p class="mb-0 mt-4">Guci Yanto</p>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">Rp 5.600.000</p>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">1</p>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">Rp 5.600.000</p>
-                                </td>                               
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="d-flex align-items-center">
-                                        <img src="img/my-img/furniture/kursi-anjar.jpg" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="" alt="">
-                                    </div>
-                                </th>
-                                <td>
-                                    <p class="mb-0 mt-4">Kursi Bapak Anjar</p>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">Rp 4.600.000</p>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">1</p>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">Rp 4.600.000</p>
-                                </td>
-                                
-                            </tr>
+                            <?php
+                                foreach($cart as $item){
+                                    echo '<tr>
+                                            <th scope="row">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="' . $item['gambar'] . '" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
+                                                </div>
+                                            </th>
+                                            <td>
+                                                <p class="mb-0 mt-4">' . $item['nama'] . '</p>
+                                            </td>
+                                            <td>
+                                                <p class="mb-0 mt-4">Rp '. number_format($item['harga'], 2, ",", ".") .'</p>
+                                            </td>
+                                            <td>
+                                                <p class="mb-0 mt-4">'. $item['quantity'] .'</p>
+                                            </td>
+                                            <td>
+                                                <p class="mb-0 mt-4">Rp '. number_format($item['total'], 2, ",", ".") .'</p>
+                                            </td>                                   
+                                        </tr>';
+                                }
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -254,20 +211,22 @@
                 
                 <script src="main.js"></script>
             </div> <!-- IKI NGGONE SOPO -->
-            <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">Checkout</button>
+            <div class="d-flex justify-content-center">
+            <a href="checkout.html" class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">Checkout</a>
+            </div>
         </div>
         <!-- Cart Page End -->
 
 
         <!-- Footer Start -->
-        <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
+        <div id="footer" class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
             <div class="container py-5">
                 <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
                     <div class="row g-4">
                         <div class="col-lg-3">
                             <a href="#">
-                                <h1 class="text-primary mb-0">Fruitables</h1>
-                                <p class="text-secondary mb-0">Fresh products</p>
+                                <h1 class="text-primary mb-0">AnticFinder</h1>
+                                <p class="text-secondary mb-0">Antic products</p>
                             </a>
                         </div>
                         <div class="col-lg-6">
@@ -278,7 +237,7 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="d-flex justify-content-end pt-3">
-                                <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-x-twitter"></i></a>
                                 <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
                                 <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-youtube"></i></a>
                                 <a class="btn btn-outline-secondary btn-md-square rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
@@ -286,24 +245,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="row g-5">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="footer-item">
-                            <h4 class="text-light mb-3">Why People Like us!</h4>
-                            <p class="mb-4">typesetting, remaining essentially unchanged. It was 
-                                popularised in the 1960s with the like Aldus PageMaker including of Lorem Ipsum.</p>
-                            <a href="" class="btn border-secondary py-2 px-4 rounded-pill text-primary">Read More</a>
-                        </div>
-                    </div>
+                <div class="row g-5 justify-content-between">
                     <div class="col-lg-3 col-md-6">
                         <div class="d-flex flex-column text-start footer-item">
-                            <h4 class="text-light mb-3">Shop Info</h4>
-                            <a class="btn-link" href="">About Us</a>
-                            <a class="btn-link" href="">Contact Us</a>
-                            <a class="btn-link" href="">Privacy Policy</a>
-                            <a class="btn-link" href="">Terms & Condition</a>
-                            <a class="btn-link" href="">Return Policy</a>
-                            <a class="btn-link" href="">FAQs & Help</a>
+                            <h4 class="text-light mb-3">Informations    </h4>
+                            <a class="btn-link" href="">Products</a>
+                            <a class="btn-link" href="">Contacts</a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
@@ -311,10 +258,7 @@
                             <h4 class="text-light mb-3">Account</h4>
                             <a class="btn-link" href="">My Account</a>
                             <a class="btn-link" href="">Shop details</a>
-                            <a class="btn-link" href="">Shopping Cart</a>
-                            <a class="btn-link" href="">Wishlist</a>
                             <a class="btn-link" href="">Order History</a>
-                            <a class="btn-link" href="">International Orders</a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">

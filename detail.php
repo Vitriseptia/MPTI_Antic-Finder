@@ -144,7 +144,6 @@
                             </div>
                             <div class="col-lg-6">
                                 <h4 class="fw-bold mb-3"><?php echo $namaData; ?></h4>
-                                <p class="mb-3">Category: <?php echo $jenisData; ?></p>
                                 <h5 class="fw-bold mb-3">Rp. <?php echo number_format($hargaData, 2, ".", ","); ?></h5>
                                 <p class="mb-4"> <?php echo $deskripsiData; ?> </p>
                                 <div class="input-group quantity mb-5" style="width: 100px;">
@@ -224,7 +223,6 @@
                                     <div class="vesitable-img" style="max-height: 18rem;">
                                         <img src="'.$gambarResult.'" class="img-fluid w-100 h-100 rounded-top" alt="">
                                     </div>
-                                    <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">'.$jenisResult.'</div>
                                     <div class="p-4 pb-0 rounded-bottom text-center"> 
                                         <h4>'.$namaResult.'</h4>
                                         <p>'.$deskripsiResult.'</p>

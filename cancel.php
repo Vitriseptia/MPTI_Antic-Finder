@@ -5,7 +5,7 @@
         unset($_SESSION['cart']);
     }
 
-    header('Location: main.php');
+    header('Location: index.php');
     exit;
 
 ?>

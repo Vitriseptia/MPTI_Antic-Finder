@@ -1,3 +1,22 @@
+<?php
+    session_start();
+
+    require 'koneksi.php';
+
+    if (isset($_SESSION['id'])) {
+        $sql = "SELECT * FROM user WHERE id = ?";
+        $res = $connection->prepare($sql);
+        $res->execute([$_SESSION['id']]);
+        $data = $res->fetch();
+
+        $namaUser = $data['nama'];
+        $alamatUser = $data['alamat'];
+        $telpUser = $data['telp'];
+        $provinsiUser = $data['provinsi'];
+        $genderUser = $data['jenis'];
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,38 +103,38 @@
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="form-group">
                                             <label for="nama">Nama</label>
-                                            <input name="nama" type="text" class="form-control" id="nama" placeholder="Masukkan Nama">
+                                            <input name="nama" type="text" class="form-control" id="nama" placeholder="Masukkan Nama" <?php if ($namaUser != null) { echo 'value="'.$namaUser.'"'; } ?>>
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="form-group">
                                             <label for="alamat">Alamat</label>
-                                            <input name="alamat" type="text" class="form-control" id="alamat" placeholder="Masukkan Alamat">
+                                            <input name="alamat" type="text" class="form-control" id="alamat" placeholder="Masukkan Alamat" <?php if ($alamatUser != null) { echo 'value="'.$alamatUser.'"'; } ?>>
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="form-group">
                                             <label for="telp">Nomor Telepon</label>
-                                            <input name="telp" type="text" class="form-control" id="telp" placeholder="Masukkan Nomor Telepon">
+                                            <input name="telp" type="text" class="form-control" id="telp" placeholder="Masukkan Nomor Telepon" <?php if ($telpUser != null) { echo 'value="'.$telpUser.'"'; } ?>>
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="form-group">
                                             <label for="provinsi">Provinsi</label>
-                                            <input name="provinsi" type="text" class="form-control" id="provinsi" placeholder="Masukkan Provinsi">
+                                            <input name="provinsi" type="text" class="form-control" id="provinsi" placeholder="Masukkan Provinsi" <?php if ($provinsiUser != null) { echo 'value="'.$provinsiUser.'"'; } ?>>
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="form-group">
                                             <label for="gender">Jenis Kelamin</label>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="gender" id="pria" value="pria">
+                                                <input class="form-check-input" type="radio" name="gender" id="pria" value="pria" <?php if ($genderUser == 'pria') { echo 'checked'; } ?>>
                                                 <label class="form-check-label" for="pria">
                                                     Pria
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="gender" id="wanita" value="wanita">
+                                                <input class="form-check-input" type="radio" name="gender" id="wanita" value="wanita" <?php if ($genderUser == 'wanita') { echo 'checked'; } ?>>
                                                 <label class="form-check-label" for="wanita">
                                                     Wanita
                                                 </label>
@@ -126,7 +145,7 @@
                                 <div class="row gutters">
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="text-right">
-                                            <button type="button" class="btn btn-secondary"><a href="index.php" style="text-decoration: none">Cancel</a></button>
+                                            <button type="button" class="btn btn-secondary"><a href="index.php" style="text-decoration: none ; color: black">Cancel</a></button>
                                             <button name="update" type="submit" name="submit" class="btn btn-primary">Update</button>
                                         </div>
                                     </div>
